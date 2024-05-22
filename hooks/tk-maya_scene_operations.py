@@ -104,3 +104,10 @@ class BreakdownSceneOperations(Hook):
                 )
                 file_name = cmds.getAttr("%s.fileTextureName" % node)
                 cmds.setAttr("%s.fileTextureName" % node, new_path, type="string")
+
+    def items_selected(self, items):
+        cmds.select(cl=True)
+
+        if len(items) > 0:
+            for item in items:
+                cmds.select(item.data.get('node_name'), add=True)
