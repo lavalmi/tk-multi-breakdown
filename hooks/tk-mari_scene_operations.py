@@ -153,3 +153,6 @@ class MariSceneOperations(Hook):
                 )
                 if new_version:
                     geo.setCurrentVersion(new_version.name())
+
+    def items_selected(self, items):
+        pass
