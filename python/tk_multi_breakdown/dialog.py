@@ -32,7 +32,7 @@ class AppDialog(QtGui.QWidget):
 
         self.ui.update.clicked.connect(self.update_items)
         self.ui.select_all.clicked.connect(self.select_all_red)
-        self.ui.browser.selection_changed.connect(self._on_selection_changed)
+        self.ui.browser.find_node.connect(self._on_find_node)
 
         # load data from shotgun
         self.setup_scene_list()
@@ -57,7 +57,7 @@ class AppDialog(QtGui.QWidget):
             except:
                 pass
 
-    def _on_selection_changed(self):
+    def _on_find_node(self, node_name):
         # call out to hook
         self._app.execute_hook_method("hook_scene_operations", "items_selected",
                                       items=self.ui.browser.get_selected_items())
