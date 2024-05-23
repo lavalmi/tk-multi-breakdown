@@ -154,5 +154,5 @@ class MariSceneOperations(Hook):
                 if new_version:
                     geo.setCurrentVersion(new_version.name())
 
-    def items_selected(self, items):
+    def find_node(self, node_name):
         pass
