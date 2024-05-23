@@ -59,8 +59,8 @@ class AppDialog(QtGui.QWidget):
 
     def _on_find_node(self, node_name):
         # call out to hook
-        self._app.execute_hook_method("hook_scene_operations", "items_selected",
-                                      items=self.ui.browser.get_selected_items())
+        self._app.execute_hook_method("hook_scene_operations", "find_node",
+                                      node_name=node_name)
 
     def update_items(self):
 
