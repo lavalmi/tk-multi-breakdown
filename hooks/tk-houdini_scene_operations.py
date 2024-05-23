@@ -94,5 +94,5 @@ class BreakdownSceneOperations(Hook):
                 )
                 alembic_node.parm("fileName").set(file_path)
 
-    def items_selected(self, items):
+    def find_node(self, node_name):
         pass
