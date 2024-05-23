@@ -132,22 +132,10 @@ class BreakdownSceneOperations(HookBaseClass):
                 clip = node_name
                 clip.reconnectMedia(new_path)
 
-    def items_selected(self, items):
-        if len(items) == 0:
-            selected_nodes = nuke.selectedNodes()
-            for node in selected_nodes:
-                node.setSelected(False)
-
-        elif len(items) == 1:
-            node = nuke.toNode(items[0].data.get('node_name'))
-            node.selectOnly()
-            self._zoom_to_selected_node(node)
-
-        else:
-            for item in items:
-                node = nuke.toNode(item.data.get('node_name'))
-                node.setSelected(True)
-                self._zoom_to_selected_node(node)
+    def find_node(self, node_name):
+        node = nuke.toNode(node_name)
+        node.selectOnly()
+        self._zoom_to_selected_node(node)
 
     def _zoom_to_selected_node(self, node):
         x = node.xpos() + node.screenWidth() / 2
