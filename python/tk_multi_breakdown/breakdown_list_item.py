@@ -10,7 +10,7 @@
 
 
 import sgtk
-from sgtk.platform.qt import QtGui
+from sgtk.platform.qt import QtGui, QtCore
 
 browser_widget = sgtk.platform.import_framework("tk-framework-widget", "browser_widget")
 
@@ -21,7 +21,7 @@ class BreakdownListItem(browser_widget.ListItem):
     """
     Custom list widget for displaying the breakdown status in the list view
     """
-
+    find_node_clicked = QtCore.Signal(str)
     def __init__(self, app, worker, parent=None):
         """
         Construction
@@ -43,7 +43,11 @@ class BreakdownListItem(browser_widget.ListItem):
         """
         ui = Ui_Item()
         ui.setupUi(self)
+        ui.btn_find_node.clicked.connect(self._on_find)
         return ui
+
+    def _on_find(self):
+        self.find_node_clicked.emit(self.data.get('node_name'))
 
     def get_latest_version_number(self):
         # returns none if not yet determined
