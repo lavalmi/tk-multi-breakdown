@@ -104,3 +104,6 @@ class BreakdownSceneOperations(Hook):
                 )
                 file_name = cmds.getAttr("%s.fileTextureName" % node)
                 cmds.setAttr("%s.fileTextureName" % node, new_path, type="string")
+
+    def find_node(self, node_name):
+        cmds.select(node_name)
