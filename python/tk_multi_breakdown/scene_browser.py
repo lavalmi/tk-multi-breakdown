@@ -26,9 +26,13 @@ class SceneBrowserWidget(browser_widget.BrowserWidget):
 
     _item_work_completed = QtCore.Signal(str, object)
     _item_work_failed = QtCore.Signal(str, str)
+    find_node = QtCore.Signal(str)
 
     def __init__(self, parent=None):
         browser_widget.BrowserWidget.__init__(self, parent)
+
+    def _find_node_item_signal(self, node_name):
+        self.find_node.emit(node_name)
 
     def get_data(self, data):
         items = breakdown.get_breakdown_items()
@@ -115,6 +119,7 @@ class SceneBrowserWidget(browser_widget.BrowserWidget):
 
                 # item has a publish in sg
                 i = self.add_item(BreakdownListItem)
+                i.find_node_clicked.connect(self._find_node_item_signal)
 
                 # provide a limited amount of data for receivers via the
                 # data dictionary on

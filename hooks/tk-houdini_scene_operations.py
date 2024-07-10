@@ -93,3 +93,6 @@ class BreakdownSceneOperations(Hook):
                     "Updating alembic node '%s' to: %s" % (node_path, file_path)
                 )
                 alembic_node.parm("fileName").set(file_path)
+
+    def find_node(self, node_name):
+        pass

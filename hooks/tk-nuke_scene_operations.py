@@ -131,3 +131,13 @@ class BreakdownSceneOperations(HookBaseClass):
                 )
                 clip = node_name
                 clip.reconnectMedia(new_path)
+
+    def find_node(self, node_name):
+        node = nuke.toNode(node_name)
+        node.selectOnly()
+        self._zoom_to_selected_node(node)
+
+    def _zoom_to_selected_node(self, node):
+        x = node.xpos() + node.screenWidth() / 2
+        y = node.ypos() + node.screenHeight() / 2
+        nuke.zoom(1.2, [x, y])
